@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'subscriptions.apps.SubscriptionsConfig',
     'contacts.apps.ContactsConfig',
@@ -44,6 +45,9 @@ INSTALLED_APPS = [
 
     'djmoney',
     'phonenumber_field',
+    'tailwind',
+    'theme',
+    'django_browser_reload',    
 ]
 
 MIDDLEWARE = [
@@ -54,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'ProPluginTracker.urls'
@@ -72,6 +78,12 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 WSGI_APPLICATION = 'ProPluginTracker.wsgi.application'
@@ -117,6 +129,10 @@ TIME_ZONE = 'America/New_York'
 USE_I18N = True
 
 USE_TZ = True
+
+PHONENUMBER_DEFAULT_REGION = 'US'
+PHONENUMBER_DB_FORMAT = "NATIONAL"
+PHONENUMBER_DEFAULT_FORMAT = 'NATIONAL'
 
 
 # Static files (CSS, JavaScript, Images)

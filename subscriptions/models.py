@@ -8,6 +8,10 @@ class Subscription(models.Model):
     purchase_date = models.DateField()
     renewal_amount = MoneyField(max_digits=19, decimal_places=2, default_currency='USD')
     related_contact = models.ForeignKey('contacts.Contact', on_delete=models.CASCADE, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True)
+
+    def __str__(self):
+        return self.subscription_name
     
 
 
