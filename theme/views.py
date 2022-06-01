@@ -1,7 +1,10 @@
+from ast import Sub
+from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
+from subscriptions.models import Subscription
 
 def index(request):
-    dashboard = "This is going to be a dashboard"
+    subscriptions = Subscription.objects.all()
     return render(request, 'home.html', {
-        'dashboard':dashboard,
+        'subscriptions':subscriptions,
     })

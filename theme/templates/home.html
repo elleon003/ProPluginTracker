@@ -7,7 +7,36 @@
 {% block content %}
   <section class="flex flex-col items-center justify-center h-screen">
     <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-    <p class="text-3xl mt-6">{{ dashboard }}</p>
+    <table class="table-auto min-w-full">
+      <thead>
+        <tr>
+          <th scope="col">
+            Name
+          </th>
+          <th scope="col">
+            Due Date
+          </th>
+          <th scope="col">
+            Amount
+          </th>
+          <th scope="col">
+            Related Contact
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for subscription in subscriptions %}
+          <tr class="border-b">
+            <td>{{ subscription.name }}</td>
+            <td>{{ subscription.due_date }}</td>
+            <td>{{ subscription.amount }}</td>
+            {% if subscription.related_contact %}
+            <td>{{ subscription.related_contact }}</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     
   </section>
 {% endblock content %}
