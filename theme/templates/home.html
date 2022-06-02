@@ -1,42 +1,36 @@
 {% extends 'base.html' %}
-{% load tailwind_tags %}
+{% load static tailwind_tags %}
 {% block title %}
   Home | {{ block.super }}
 {% endblock title %}
 
 {% block content %}
   <section class="flex flex-col items-center justify-center h-screen">
-    <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-    <table class="table-auto min-w-full">
-      <thead>
-        <tr>
-          <th scope="col">
-            Name
-          </th>
-          <th scope="col">
-            Due Date
-          </th>
-          <th scope="col">
-            Amount
-          </th>
-          <th scope="col">
-            Related Contact
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for subscription in subscriptions %}
-          <tr class="border-b">
-            <td>{{ subscription.name }}</td>
-            <td>{{ subscription.due_date }}</td>
-            <td>{{ subscription.amount }}</td>
-            {% if subscription.related_contact %}
-            <td>{{ subscription.related_contact }}</td>
-            {% endif %}
+    <h1 class="text-center text-3xl lg:text-5xl mb-6">Pro Annual Tracker</h1>
+    <div class="px-2 lg:px-8 lg:w-2/3">
+      <table class="table-fixed w-full text-left sortable">
+        <thead class="text-sm lg:text-xl whitespace-normal">
+          <tr>
+            <th>Name</th>
+            <th>Due Date</th>
+            <th>Amount</th>
+            <th>Related Contact</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="lg:text-lg">
+          {% for subscription in subscriptions %}
+          <tr>
+            <td><a href="@TODO">{{ subscription.name }}</a></td>
+            <td data-sort="{{ subscription.due_date | date:'Ymd'}}">{{ subscription.due_date | date:"d M Y" }}</td>
+            <td>{{ subscription.amount }}</td>
+            <td><a href="@TODO">{{ subscription.related_contact }}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    
     
   </section>
+  <script src="{% static 'js/sortable.js' %}"></script>
 {% endblock content %}
