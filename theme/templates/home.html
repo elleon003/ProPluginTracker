@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static tailwind_tags %}
 {% block title %}
   Home | {{ block.super }}
 {% endblock title %}
@@ -7,30 +6,8 @@
 {% block content %}
   <section class="flex flex-col items-center justify-center h-screen">
     <h1 class="text-center text-3xl lg:text-5xl mb-6">Pro Annual Tracker</h1>
-    <div class="px-2 lg:px-8 lg:w-2/3">
-      <table class="table-fixed w-full text-left sortable">
-        <thead class="text-sm lg:text-xl whitespace-normal">
-          <tr>
-            <th>Name</th>
-            <th>Due Date</th>
-            <th>Amount</th>
-            <th>Related Contact</th>
-          </tr>
-        </thead>
-        <tbody class="lg:text-lg">
-          {% for subscription in subscriptions %}
-          <tr>
-            <td><a href="{{ subscription.get_absolute_url }}">{{ subscription.name }}</a></td>
-            <td data-sort="{{ subscription.due_date | date:'Ymd'}}">{{ subscription.due_date | date:"M d, Y" }}</td>
-            <td>{{ subscription.amount }}</td>
-            <td><a href="@TODO">{{ subscription.related_contact }}</a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    
+    <hr>
+    <h2 class="text-center text-2xl my-8">This will be a dashboard</h2>
     
   </section>
-  <script src="{% static 'js/sortable.js' %}"></script>
 {% endblock content %}

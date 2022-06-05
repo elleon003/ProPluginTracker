@@ -23,7 +23,7 @@
             <td><a href="{{ subscription.get_absolute_url }}">{{ subscription.name }}</a></td>
             <td data-sort="{{ subscription.due_date | date:'Ymd'}}">{{ subscription.due_date | date:"M d, Y" }}</td>
             <td>{{ subscription.amount }}</td>
-            <td><a href="@TODO">{{ subscription.related_contact }}</a></td>
+            <td><a href="TODO">{{ subscription.related_contact }}</a></td>
           </tr>
           {% endfor %}
         </tbody>

@@ -1,6 +1,6 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="coffee">
 	<head>
     <title>
 			{% block title %}
@@ -14,8 +14,10 @@
 	</head>
 
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+		{% block header %}
+  			{% include "./includes/header.html" %}
+			{% endblock header %}
 		<div class="container mx-auto">
-			{% block header %}{% endblock header %}
 			{% block content %}{% endblock content %}
 			{% block footer %}{% endblock footer %}
 		</div>
