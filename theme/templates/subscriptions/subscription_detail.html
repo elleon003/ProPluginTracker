@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+
+
+{% block title %}
+  {{ subscription.name }} | {{ block.super }}
+{% endblock title %}
+  
+{% block content %}
+<div>
+  <h2>{{ subscription.name }}</h2>
+  <p>{{ subscription.purchase_date }}</p>
+  <p>{{ subscription.amount }}</p>
+  <p>{{ subscription.related_contact }}</p>
+</div>
+{% endblock content %}

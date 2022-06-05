@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'tailwind',
     'theme',
-    'django_browser_reload',    
+    'django_browser_reload', 
+    'data_wizard',
+    'data_wizard.sources',  
 ]
 
 MIDDLEWARE = [
@@ -64,10 +66,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ProPluginTracker.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'theme/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,6 +91,21 @@ INTERNAL_IPS = [
 ]
 
 WSGI_APPLICATION = 'ProPluginTracker.wsgi.application'
+
+DATA_WIZARD = {
+    'BACKEND': 'data_wizard.backends.threading',
+    'LOADER': 'data_wizard.loaders.FileLoader',
+    'IDMAP': 'data_wizard.idmap.existing',
+    'AUTHENTICATION': 'rest_framework.authentication.SessionAuthentication',
+    'PERMISSION': 'rest_framework.permissions.IsAdminUser',
+    'AUTO_IMPORT_TASKS': (
+        'data_wizard.tasks.check_serializer',
+        'data_wizard.tasks.check_iter',
+        'data_wizard.tasks.check_columns',
+        'data_wizard.tasks.check_row_identifiers',
+        'data_wizard.tasks.import_data',
+    ),
+}
 
 
 # Database

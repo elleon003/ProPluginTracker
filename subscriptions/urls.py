@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from .views import SubscriptionListView, SubscriptionDetailView
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', SubscriptionListView.as_view(), name='subscription_list'),
+    path('<slug:slug>', SubscriptionDetailView.as_view(), name="subscription_detail"),
+    
 ]
