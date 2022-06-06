@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center text-3xl lg:text-5xl my-6">New Subscription</h1>
+<div class="my-4">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary btn-md my-6" type="submit" value="Save">
+  </form>
+</div>
+{% endblock content %}
